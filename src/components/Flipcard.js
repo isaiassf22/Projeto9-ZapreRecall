@@ -45,33 +45,33 @@ export default function Flipcard({ number, open, openCard,counter,count}) {
     return (
         <>
             {open !== number ?
-                <ClosedCard onClick={verification==="black"? () => openCard(number):"" }  color={verification}>
-                    <p>{boxPerguntas[number].begin}</p>
+                <ClosedCard   color={verification}>
+                    <p data-test="flashcard-text" >{boxPerguntas[number].begin}</p>
                     
-                    <img src={icon} alt="icon" />
+                    <img src={icon} alt="icon" onClick={verification==="black"? () => openCard(number):"" } data-test="play-btn"/>
                 </ClosedCard>
                 : showAnswear ?
                     <OpenedCard>
-                        <p>{boxPerguntas[number].answear}</p>
+                        <p data-test="flashcard-text">{boxPerguntas[number].answear}</p>
 
                         <Button>
-                            <button style={{ backgroundColor: 'red' }} onClick={()=>result("red")}>
+                            <button style={{ backgroundColor: 'red' }} onClick={()=>result("red")} data-test="no-btn">
                                 Não lembrei
                             </button>
-                            <button  style={{ backgroundColor: "#FF922E" }} onClick={()=>result("#FF922E")}>
+                            <button  style={{ backgroundColor: "#FF922E" }} onClick={()=>result("#FF922E")} data-test="partial-btn">
                                 quase não lembrei
                             </button>
-                            <button  style={{ backgroundColor: "green" }} onClick={()=>result("green")}>
+                            <button  style={{ backgroundColor: "green" }} onClick={()=>result("green")} data-test="zap-btn">
                                 Zap!
                             </button>
                         </Button>
 
                     </OpenedCard>
                     :
-                    <OpenedCard onClick={() => setShowAnswear(true)}>
+                    <OpenedCard >
                         <span>
-                            <p>{boxPerguntas[number].question}</p>
-                            <img src={icon_1} alt="" />
+                            <p data-test="flashcard-text">{boxPerguntas[number].question}</p>
+                            <img src={icon_1} alt="icon" onClick={() => setShowAnswear(true)} data-test="turn-btn"/>
                         </span>
 
                     </OpenedCard>
@@ -107,6 +107,8 @@ const ClosedCard = styled.div`
 
     img{
         height: 40px;
+        margin-right: 10px;
+        cursor: pointer;
     }
     
 `
@@ -137,6 +139,7 @@ const OpenedCard = styled.div`
         height: 40px;
         width: 40px;
         margin-right: 10px;
+        cursor: pointer;
     }
     
 `
@@ -149,5 +152,6 @@ const Button = styled.div`
         height: 50px;
         border-radius: 10px;
         color: white;
+        cursor: pointer;
     }
 `

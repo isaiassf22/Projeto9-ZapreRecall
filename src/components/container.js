@@ -19,7 +19,7 @@ export default function Container() {
                     <img src={title} alt="zap" />
                 </Header>
                 <Main>
-                    {boxPerguntas.map((l, i) => <Flipcard  key={i} number={i} open={open} openCard={setOpen} counter={setCounter} count={counter} />)}    
+                    {boxPerguntas.map((l, i) => <Flipcard  key={i} number={i} open={open} openCard={setOpen} counter={setCounter} count={counter}  data-test="flashcard" />)}    
                 </Main>
 
 

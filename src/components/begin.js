@@ -48,5 +48,6 @@ button{
     border: 1px solid red;
     border-radius: 5px;
     margin-top: 30px;
+    cursor: pointer;
 }
 `
